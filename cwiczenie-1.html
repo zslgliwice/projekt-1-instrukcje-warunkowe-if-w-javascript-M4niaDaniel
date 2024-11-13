@@ -6,26 +6,64 @@
 	<meta charset="utf-8">
 	<title>1 - Instrukcja warunkowa w JavaScript</title>
 	<link href="arkusz-cwiczenia.css" rel="stylesheet">
-	
+	<style>
+		#red{
+			color: #49111c;
+		}
+		#green{
+			color: #3A5A40;
+		}
+		#yellow{
+			color: #D8BD8A;
+		}
+	</style>
 </head>
 
 <body>
 
 	<label>
-		Podaj numer dnia tygodnia: <input type="number">
+		Podaj numer dnia tygodnia: <input type="number" id="in">
 	</label>
 	
-	<input type="submit" value="Zobacz nazwę dnia" onclick="getDayName()">
+	<input type="submit" value="Zobacz nazwę dnia" id="submit">
 
 	<div id="wynik"></div>
 	
 	<script>
 	
-		function getDayName()
-		{
-					
-			
-		}
+			const input = document.querySelector('#in');
+			const res = document.querySelector('#wynik');
+			const submit = document.querySelector('#submit');
+
+			submit.addEventListener('click', ()=>{
+				const day_num = parseInt(input.value);
+				switch(day_num){
+					case 1:
+						res.innerHTML = 'Pierwszy dzień tygodnia to Monday - poniedziałek';
+						break;
+					case 2:
+						res.innerHTML = 'Drugi dzień tygodnia to Tuesday - wtorek';
+						break;
+					case 3:
+						res.innerHTML = 'Trzeci dzień tygodnia to Wednesday - środa';
+						break;
+					case 4:
+						res.innerHTML = 'Czwarty dzień tygodnia to Thursday - czwartek';
+						break;
+					case 5:
+						res.innerHTML = `<span id="yellow">Piąty dzień tygodnia to Friday - piątek, piąteczek, piątunio</span>`;
+						break;
+					case 6:
+						res.innerHTML = '<span id="green">Szósty dzień tygodnia to Saturday - sobota</span>';
+						break;
+					case 7:
+						res.innerHTML = '<span id="green">Pierwszy dzień tygodnia to Sunday - niedziela</span>';
+						//Niedziela to sidmy dzien tygodnia ale chcialem zeby bylo zgodnie z poleceniem
+						break;
+					default:
+						res.innerHTML =	'<span id="red">To nie jest prawidłowy numer dnia tygodnia!</span>';
+				}
+			})
 
 	</script>
 
